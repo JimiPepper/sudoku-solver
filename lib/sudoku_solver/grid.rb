@@ -1,3 +1,5 @@
+require 'sudoku_solver'
+
 # Is the sudoku's grid representation. More technically, it is
 # simply a 2D array-wrapper which includes two iterator (each 
 # and map) and several other methods. It uses the tensor, so to 
