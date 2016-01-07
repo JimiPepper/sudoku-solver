@@ -24,7 +24,7 @@ class SudokuSolver::Grid
         ]
     else
         first_dimension_analysis = array.size == 9
-        second_dimension_analysis = array.map { |sub_array| sub_array.class != Array and sub_array.size == 9 }
+        second_dimension_analysis = array.map { |sub_array| sub_array.all? { |i| i.is_a?(Integer) } and sub_array.size == 9 }
 
         if first_dimension_analysis && second_dimension_analysis.all?
             @grid = array
@@ -121,6 +121,7 @@ class SudokuSolver::Grid
     if index.between?(1, 9)
         min_x = (index - 1) % 3 * 3
         min_y = ((index - 1) / 3) * 3
+
         [
           [ @grid[min_y][min_x..(min_x + 2)] ],
           [ @grid[min_y + 1][min_x..(min_x + 2)] ],
